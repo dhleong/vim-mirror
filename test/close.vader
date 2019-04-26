@@ -46,3 +46,35 @@ Expect javascript:
   (function() {
     |
   })
+
+"
+" =========================================================
+"
+
+Given javascript (Function def with paired bracket):
+  function takeOff() {
+  }
+
+Do:
+  A\<cr>|
+
+Expect javascript (Don't create duplicate brackets):
+  function takeOff() {
+    |
+  }
+
+"
+" =========================================================
+"
+
+Given javascript (Anonymous function with paired bracket):
+  const takeOff = () => {
+  };
+
+Do:
+  A\<cr>|
+
+Expect javascript (Don't create duplicate brackets):
+  const takeOff = () => {
+    |
+  };

@@ -22,6 +22,13 @@ func! mirror#closer#Close()
         return ''
     endif
 
+    let nextLineNr = line('.') + 1
+    let nextLine = getline(nextLineNr)
+    if nextLine =~# '^' . indent . mirroredTags
+        " don't create duplicate closing tag; just indent
+        return "\<Tab>"
+    endif
+
     " use <esc>a to go back to the 0'th column to avoid
     " dealing with other indent level config/plugins
     let keys = "\<Esc>a" . indent . mirroredTags
