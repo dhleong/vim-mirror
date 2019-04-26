@@ -3,23 +3,23 @@ func! mirror#closer#Close()
 
     let config = mirror#Config()
     if empty(config)
-        return ""
+        return ''
     endif
 
     " if we aren't now on an empty line, we hit enter
     " in the middle of a line, and should not do anything
     if getline('.') !~# '^\s*$'
-        return ""
+        return ''
     endif
 
-    let initialLineNr = line(".") - 1
+    let initialLineNr = line('.') - 1
     let line = getline(initialLineNr)
     let indent = matchstr(line, '^\s*')
 
     let mirroredTags = mirror#extract#Extract(config, line)
-    if mirroredTags == ""
+    if mirroredTags ==# ''
         " no tags? do nothing
-        return ""
+        return ''
     endif
 
     " use <esc>a to go back to the 0'th column to avoid
