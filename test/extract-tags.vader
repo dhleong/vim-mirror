@@ -1,0 +1,9 @@
+Execute (Simple case):
+  let config = { 'open': '([{`', 'close': ')]}`' }
+  let ex = mirror#extract#Extract(config, "while (true) {")
+  AssertEqual "}", ex
+
+Execute (Ignore self-closed tags):
+  let config = { 'open': '([{`', 'close': ')]}`' }
+  let ex = mirror#extract#Extract(config, "(function () {")
+  AssertEqual "})", ex

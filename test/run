@@ -1,0 +1,26 @@
+#!/bin/bash
+
+dir=$(dirname "${BASH_SOURCE[0]}")
+if [ "$dir" = "." ]
+then
+    cd ..
+fi
+
+VADER_PATH=vader.vim
+
+if ! [ -d $VADER_PATH ]
+then
+    # local testing
+    VADER_PATH=~/.vim/bundle/vader.vim
+fi
+
+vim -esNu <(cat << VIMRC
+set rtp+=$VADER_PATH
+set rtp+=.
+
+# shared tab indent for test-writing simplicity
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set expandtab
+VIMRC) -c 'Vader! test/*' > /dev/null

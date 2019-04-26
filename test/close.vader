@@ -1,0 +1,42 @@
+Given javascript (Simple Javascript Object literal):
+  {
+
+Do:
+* As a convention, use | so we can visually see the resulting cursor
+  A\<cr>|
+
+Expect javascript:
+  {
+    |
+  }
+
+
+"
+" =========================================================
+"
+
+Given javascript (Simple Javascript function def):
+  function takeOff() {
+
+Do:
+  A\<cr>|
+
+Expect javascript:
+  function takeOff() {
+    |
+  }
+
+"
+" =========================================================
+"
+
+Given javascript (Inline-executed function):
+  (function() {
+
+Do:
+  A\<cr>|
+
+Expect javascript:
+  (function() {
+    |
+  })
