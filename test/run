@@ -17,10 +17,4 @@ fi
 vim -esNu <(cat << VIMRC
 set rtp+=$VADER_PATH
 set rtp+=.
-
-# shared tab indent for test-writing simplicity
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
-set expandtab
 VIMRC) -c 'Vader! test/*' > /dev/null
