@@ -1,3 +1,14 @@
+func! s:extractSuffix(config)
+    for Suffix in a:config.suffixes
+        let s = Suffix()
+        if s !=# ''
+            return s
+        endif
+    endfor
+
+    return ''
+endfunc
+
 func! mirror#closer#Close()
     " NOTE: returns keys to type
 
@@ -31,7 +42,7 @@ func! mirror#closer#Close()
 
     " use <esc>a to go back to the 0'th column to avoid
     " dealing with other indent level config/plugins
-    let keys = "\<Esc>a" . indent . mirroredTags
+    let keys = "\<Esc>a" . indent . mirroredTags . s:extractSuffix(config)
 
     " now go back 'inside' the context
     let keys .= "\<C-O>O"

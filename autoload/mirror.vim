@@ -13,6 +13,7 @@ func! mirror#Config()
     let config = {}
     let config.open = open
     let config.close = get(b:, 'mirror_close', '')
+    let config.suffixes = get(b:, 'mirror_suffixes', [])
 
     return config
 endfunc
