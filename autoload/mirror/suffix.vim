@@ -5,11 +5,6 @@ endfunc
 
 func! s:ContainerMatches(regex)
     let context = mirror#context#GetContaining()
-    if context ==# ''
-        " no container? consider it a match
-        return 1
-    endif
-
     return context =~# a:regex
 endfunc
 
