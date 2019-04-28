@@ -53,6 +53,27 @@ Expect javascript (Never uses semicolons):
 " =========================================================
 "
 
+Given javascript (Multi-line Javascript function def with semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  function takeOff(
+    speed,
+  ) {
+
+Do:
+  GA\<cr>|
+
+Expect javascript (Never uses semicolons):
+  const cargo = "bobble-headed geisha dolls";
+  function takeOff(
+    speed,
+  ) {
+    |
+  }
+
+"
+" =========================================================
+"
+
 Given javascript (Inline-executed function):
   (function() {
 

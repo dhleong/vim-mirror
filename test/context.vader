@@ -1,0 +1,91 @@
+Given javascript (Simple Javascript Object literal):
+  {
+
+Do:
+  Go
+
+Then:
+  let context = mirror#context#Get()
+  AssertEqual "{", context
+
+"
+" =========================================================
+"
+
+Given javascript (Simple function def):
+  function takeOff() {
+
+Do:
+  Go
+
+Then:
+  let context = mirror#context#Get()
+  AssertEqual "function takeOff() {", context
+
+"
+" =========================================================
+"
+
+Given javascript (Two-line function def):
+  function takeOff(
+  ) {
+
+Do:
+  Go
+
+Then:
+  let context = mirror#context#Get()
+  AssertEqual "function takeOff(\n) {", context
+
+"
+" =========================================================
+"
+
+Given javascript (Multi-line function def):
+  function takeOff(
+    speed,
+  ) {
+
+Do:
+  Go
+
+Then:
+  let context = mirror#context#Get()
+  AssertEqual "function takeOff(\n  speed,\n) {", context
+
+"
+" =========================================================
+"
+
+Given javascript (Trailing Javascript at top level):
+  }
+
+  function takeOff(
+    speed,
+  ) {
+
+Do:
+  Go
+
+Then:
+  let context = mirror#context#Get()
+  AssertEqual "function takeOff(\n  speed,\n) {", context
+
+"
+" =========================================================
+"
+
+Given javascript (Tightly trailing Javascript at top level):
+  }
+  function takeOff(
+    speed,
+  ) {
+
+Do:
+  Go
+
+Then:
+  let context = mirror#context#Get()
+  AssertEqual "function takeOff(\n  speed,\n) {", context
+
+
