@@ -16,6 +16,44 @@ Expect javascript:
     |
   }
 
+"
+" =========================================================
+"
+
+Given javascript (Simple Javascript Object literal with semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  const storage = {
+
+Do:
+  GA\<cr>|
+
+Expect javascript:
+  const cargo = "bobble-headed geisha dolls";
+  const storage = {
+    |
+  };
+
+"
+" =========================================================
+"
+
+Given javascript (Nested Javascript Object literal with semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  const storage = {
+    {
+  };
+
+Do:
+  2jA\<cr>|
+
+Expect javascript:
+  const cargo = "bobble-headed geisha dolls";
+  const storage = {
+    {
+      |
+    }
+  };
+
 
 "
 " =========================================================

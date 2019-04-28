@@ -3,6 +3,16 @@ func! s:ContextMatches(regex)
     return context =~# a:regex
 endfunc
 
+func! s:ContainerMatches(regex)
+    let context = mirror#context#GetContaining()
+    if context ==# ''
+        " no container? consider it a match
+        return 1
+    endif
+
+    return context =~# a:regex
+endfunc
+
 func! s:FindMatchingSuffixUsage(usage)
     return search(a:usage . '$', 'nw') != 0
 endfunc
@@ -25,6 +35,11 @@ func! s:CanUseSuffix(suffix, opts)
 
     let neverIfContextMatches = get(a:opts, 'neverIfContextMatches', '')
     if neverIfContextMatches !=# '' && s:ContextMatches(neverIfContextMatches)
+        return 0
+    endif
+
+    let whenContainerMatches = get(a:opts, 'whenContainerMatches', '')
+    if whenContainerMatches !=# '' && !s:ContainerMatches(whenContainerMatches)
         return 0
     endif
 

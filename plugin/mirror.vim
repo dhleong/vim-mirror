@@ -5,6 +5,7 @@ let s:c_suffixes = [
     \     'after': ')]}',
     \     'onlyIfPresent': 1,
     \     'neverIfContextMatches': 'function\|class\|interface\|if\|else',
+    \     'whenContainerMatches': ')\s*{',
     \   })
     \ ]
 

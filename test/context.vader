@@ -88,4 +88,55 @@ Then:
   let context = mirror#context#Get()
   AssertEqual "function takeOff(\n  speed,\n) {", context
 
+"
+" =========================================================
+"
+
+Given javascript (Class method):
+  class {
+    function takeOff(
+      speed,
+    ) {
+
+Do:
+  Go
+
+Then:
+  let context = mirror#context#Get()
+  AssertEqual "  function takeOff(\n    speed,\n  ) {", context
+
+"
+" =========================================================
+"
+
+Given javascript (Tightly trailing Javascript at top level):
+  }
+  function takeOff(
+    speed,
+  ) {
+
+Do:
+  Go
+
+Then (No containing context):
+  let context = mirror#context#GetContaining()
+  AssertEqual "", context
+
+"
+" =========================================================
+"
+
+Given javascript (Class method):
+  class Foo {
+    function takeOff(
+      speed,
+    ) {
+
+Do:
+  Go
+
+Then (Class context):
+  let context = mirror#context#GetContaining()
+  AssertEqual "class Foo {", context
+
 
