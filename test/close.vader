@@ -36,6 +36,23 @@ Expect javascript:
 " =========================================================
 "
 
+Given javascript (Simple Javascript function def with semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  function takeOff() {
+
+Do:
+  GA\<cr>|
+
+Expect javascript (Never uses semicolons):
+  const cargo = "bobble-headed geisha dolls";
+  function takeOff() {
+    |
+  }
+
+"
+" =========================================================
+"
+
 Given javascript (Inline-executed function):
   (function() {
 
@@ -62,6 +79,23 @@ Expect javascript (Don't create duplicate brackets):
   function takeOff() {
     |
   }
+
+"
+" =========================================================
+"
+
+Given javascript (Anonymous function with semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  const takeOff = () => {
+
+Do:
+  GA\<cr>|
+
+Expect javascript (Use semicolon suffix when appropriate):
+  const cargo = "bobble-headed geisha dolls";
+  const takeOff = () => {
+    |
+  };
 
 "
 " =========================================================

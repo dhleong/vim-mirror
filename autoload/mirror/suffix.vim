@@ -1,10 +1,30 @@
+func! s:ContextMatches(regex)
+    let context = mirror#context#Get()
+    return context =~# a:regex
+endfunc
+
+func! s:FindMatchingSuffixUsage(usage)
+    return search(a:usage . '$', 'nw') != 0
+endfunc
+
 func! s:CanUseSuffix(suffix, opts)
     let suffix = a:suffix
     let after = a:opts.after
-    let onlyIfMatched = a:opts.onlyIfMatched
 
-    if onlyIfMatched
-        " TODO try to find a matching use of after + suffix
+    " try to find a matching use of after + suffix
+    let onlyIfMatched = get(a:opts, 'onlyIfMatched', 0)
+    if onlyIfMatched && !s:FindMatchingSuffixUsage(after . suffix)
+        return 0
+    endif
+
+    " try to find a matching use of suffix
+    let onlyIfPresent = get(a:opts, 'onlyIfPresent', 0)
+    if onlyIfPresent && !s:FindMatchingSuffixUsage(suffix)
+        return 0
+    endif
+
+    let neverIfContextMatches = get(a:opts, 'neverIfContextMatches', '')
+    if neverIfContextMatches !=# '' && s:ContextMatches(neverIfContextMatches)
         return 0
     endif
 

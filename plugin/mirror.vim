@@ -3,7 +3,8 @@ let s:c_close = ')]}'
 let s:c_suffixes = [
     \   mirror#suffix#Define(';', {
     \     'after': ')]}',
-    \     'onlyIfMatched': 1,
+    \     'onlyIfPresent': 1,
+    \     'neverIfContextMatches': 'function\|class\|interface\|if\|else',
     \   })
     \ ]
 
