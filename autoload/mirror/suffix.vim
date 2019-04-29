@@ -28,11 +28,13 @@ func! s:CanUseSuffix(suffix, opts)
         return 0
     endif
 
+    " forbid use based on context match
     let neverIfContextMatches = get(a:opts, 'neverIfContextMatches', '')
     if neverIfContextMatches !=# '' && s:ContextMatches(neverIfContextMatches)
         return 0
     endif
 
+    " forbid use based unless container matches
     let whenContainerMatches = get(a:opts, 'whenContainerMatches', '')
     if whenContainerMatches !=# '' && !s:ContainerMatches(whenContainerMatches)
         return 0
