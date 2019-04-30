@@ -50,6 +50,14 @@ func! s:CanUseSuffix(suffix, opts)
     return 1
 endfunc
 
+func! s:TryUseSuffix(suffix, opts)
+    if s:CanUseSuffix(a:suffix, a:opts)
+        return a:suffix
+    endif
+
+    return ''
+endfunc
+
 func! mirror#suffix#Define(suffix, opts)
-    return { -> s:CanUseSuffix(a:suffix, a:opts) ? a:suffix : '' }
+    return function('s:TryUseSuffix', [a:suffix, a:opts])
 endfunc
