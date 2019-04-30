@@ -1,6 +1,6 @@
 func! s:extractSuffix(config)
-    for Suffix in a:config.suffixes
-        let s = Suffix()
+    for suffix in a:config.suffixes
+        let s = suffix.Extract()
         if s !=# ''
             return s
         endif

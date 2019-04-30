@@ -50,14 +50,19 @@ func! s:CanUseSuffix(suffix, opts)
     return 1
 endfunc
 
-func! s:TryUseSuffix(suffix, opts)
-    if s:CanUseSuffix(a:suffix, a:opts)
-        return a:suffix
-    endif
-
-    return ''
-endfunc
-
 func! mirror#suffix#Define(suffix, opts)
-    return function('s:TryUseSuffix', [a:suffix, a:opts])
+    let context = {
+        \ 'suffix': a:suffix,
+        \ 'opts': a:opts
+        \ }
+
+    func! context.Extract() dict
+        if s:CanUseSuffix(self.suffix, self.opts)
+            return self.suffix
+        endif
+
+        return ''
+    endfunc
+
+    return context
 endfunc
