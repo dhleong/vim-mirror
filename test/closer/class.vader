@@ -1,0 +1,23 @@
+Execute (Ensure indent setup):
+  setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+"
+" =========================================================
+"
+
+Given javascript (Class method with semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  class Ship {
+    takeOff() {
+  }
+
+Do:
+  2jA\<cr>|
+
+Expect javascript:
+  const cargo = "bobble-headed geisha dolls";
+  class Ship {
+    takeOff() {
+      |
+    }
+  }

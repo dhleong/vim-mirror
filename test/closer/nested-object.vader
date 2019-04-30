@@ -1,0 +1,46 @@
+Execute (Ensure indent setup):
+  setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+"
+" =========================================================
+"
+
+Given javascript (Nested Javascript Object literal with semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  const storage = {
+    {
+  };
+
+Do:
+  2jA\<cr>|
+
+Expect javascript:
+  const cargo = "bobble-headed geisha dolls";
+  const storage = {
+    {
+      |
+    },
+  };
+
+"
+" =========================================================
+"
+
+Given javascript (Nested Javascript Object literal with semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  const storage = {
+    stash() {
+  };
+
+Do:
+  2jA\<cr>|
+
+Expect javascript (Inline methods get comma):
+  const cargo = "bobble-headed geisha dolls";
+  const storage = {
+    stash() {
+      |
+    },
+  };
+
+

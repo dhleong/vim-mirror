@@ -1,8 +1,5 @@
 Execute (Ensure indent setup):
-  setlocal shiftwidth=2
-  setlocal tabstop=2
-  setlocal softtabstop=2
-  setlocal expandtab
+  setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
 Given javascript (Simple Javascript Object literal):
   {
@@ -32,28 +29,6 @@ Expect javascript:
   const storage = {
     |
   };
-
-"
-" =========================================================
-"
-
-Given javascript (Nested Javascript Object literal with semicolon context):
-  const cargo = "bobble-headed geisha dolls";
-  const storage = {
-    {
-  };
-
-Do:
-  2jA\<cr>|
-
-Expect javascript:
-  const cargo = "bobble-headed geisha dolls";
-  const storage = {
-    {
-      |
-    },
-  };
-
 
 "
 " =========================================================
@@ -156,37 +131,3 @@ Expect javascript (Use semicolon suffix when appropriate):
     |
   };
 
-"
-" =========================================================
-"
-
-Given javascript (Object literal in anonymous function with semicolon context):
-  const takeOff = () => {
-    const cargo = {
-  };
-
-Do:
-  2GA\<cr>|
-
-Expect javascript (Use semicolon suffix when appropriate):
-  const takeOff = () => {
-    const cargo = {
-      |
-    };
-  };
-
-"
-" =========================================================
-"
-
-Given javascript (Anonymous function with paired bracket):
-  const takeOff = () => {
-  };
-
-Do:
-  A\<cr>|
-
-Expect javascript (Don't create duplicate brackets):
-  const takeOff = () => {
-    |
-  };

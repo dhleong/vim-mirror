@@ -40,6 +40,12 @@ func! s:CanUseSuffix(suffix, opts)
         return 0
     endif
 
+    " forbid use *when* container matches
+    let neverIfContainerMatches = get(a:opts, 'neverIfContainerMatches', '')
+    if neverIfContainerMatches !=# '' && s:ContainerMatches(neverIfContainerMatches)
+        return 0
+    endif
+
     " No other restrictions; use it!
     return 1
 endfunc

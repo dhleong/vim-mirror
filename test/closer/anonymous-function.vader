@@ -1,0 +1,39 @@
+Execute (Ensure indent setup):
+  setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+"
+" =========================================================
+"
+
+Given javascript (Object literal in anonymous function with semicolon context):
+  const takeOff = () => {
+    const cargo = {
+  };
+
+Do:
+  2GA\<cr>|
+
+Expect javascript (Use semicolon suffix when appropriate):
+  const takeOff = () => {
+    const cargo = {
+      |
+    };
+  };
+
+"
+" =========================================================
+"
+
+Given javascript (Anonymous function with paired bracket):
+  const takeOff = () => {
+  };
+
+Do:
+  A\<cr>|
+
+Expect javascript (Don't create duplicate brackets):
+  const takeOff = () => {
+    |
+  };
+
+

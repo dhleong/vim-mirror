@@ -15,6 +15,7 @@ let s:c_suffixes = [ s:semicolon_suffix ]
 let s:comma_suffix = mirror#suffix#Define(',', {
     \   'after': ']}',
     \   'neverIfContextMatches': 'function\|class\|interface\|if\|else',
+    \   'neverIfContainerMatches': 'class\|interface',
     \   'whenContainerMatches': '\s*\([\|{\)$',
     \ })
 
