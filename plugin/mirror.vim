@@ -4,7 +4,7 @@
 let s:semicolon_suffix = mirror#suffix#Define(';', {
     \   'after': ')]}',
     \   'onlyIfPresent': 1,
-    \   'neverIfContextMatches': 'function\|class\|interface\|if\|else',
+    \   'neverIfContextMatches': 'function\|class\|interface\|if\|else\|for\|while',
     \   'whenContainerMatches': '^$\|)\(\s\|=>\)*{',
     \ })
 
@@ -14,7 +14,7 @@ let s:c_suffixes = [ s:semicolon_suffix ]
 
 let s:comma_suffix = mirror#suffix#Define(',', {
     \   'after': ']}',
-    \   'neverIfContextMatches': 'function\|class\|interface\|if\|else',
+    \   'neverIfContextMatches': 'function\|class\|interface\|if\|else\|for\|while',
     \   'neverIfContainerMatches': 'class\|interface',
     \   'whenContainerMatches': '\s*\([\|{\)$',
     \ })

@@ -1,0 +1,36 @@
+Execute (Ensure indent setup):
+  setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+"
+" =========================================================
+"
+
+Given javascript (for-loop with semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  for (let i = 0; i < 42; ++i) {
+
+Do:
+  GA\<cr>|
+
+Expect javascript:
+  const cargo = "bobble-headed geisha dolls";
+  for (let i = 0; i < 42; ++i) {
+    |
+  }
+
+"
+" =========================================================
+"
+
+Given javascript (while-loop with semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  while (isAwesome()) {
+
+Do:
+  GA\<cr>|
+
+Expect javascript:
+  const cargo = "bobble-headed geisha dolls";
+  while (isAwesome()) {
+    |
+  }
