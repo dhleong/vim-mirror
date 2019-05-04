@@ -1,0 +1,5 @@
+Execute:
+  filetype plugin on
+  syntax enable
+
+

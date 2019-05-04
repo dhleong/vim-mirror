@@ -23,8 +23,7 @@ func! mirror#closer#Close()
         return ''
     endif
 
-    let initialLineNr = line('.') - 1
-    let line = getline(initialLineNr)
+    let line = mirror#line#Get()
     let indent = matchstr(line, '^\s*')
 
     let mirroredTags = mirror#extract#Extract(config, line)

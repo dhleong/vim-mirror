@@ -1,3 +1,5 @@
+Include: _base-setup.vader
+
 Given javascript (Simple Javascript Object literal):
   {
 

@@ -1,0 +1,34 @@
+Include: _setup.vader
+
+"
+" =========================================================
+"
+
+Given javascript (Function call with unclosed mirrors in closed string):
+  takeOff("port locks :(");
+
+Do:
+  GA\<cr>|
+
+Expect javascript (Don't add unnecessary garbage):
+  takeOff("port locks :(");
+  |
+
+"
+" =========================================================
+"
+
+Given javascript (Function call with unclosed mirrors in string):
+* NOTE: the default javascript syntax doesn't mark template strings
+* as String, so we can't properly test using it here. Testing that
+* we don't try to close the sad face in the unclosed string should
+* be a reasonable facsimile of such a test, however
+  takeOff("port locks :(
+
+Do:
+  GA\<cr>|
+
+Expect javascript (Don't add unnecessary garbage):
+  takeOff("port locks :(
+    |
+  )

@@ -1,0 +1,78 @@
+Include: _base-setup.vader
+
+"
+" =========================================================
+"
+
+Given javascript (Empty file):
+  |
+
+Do:
+  dd
+
+Then:
+  AssertEqual "", mirror#line#Get()
+
+"
+" =========================================================
+"
+
+Given javascript (Empty line):
+
+Do:
+  ddo
+
+Then:
+  AssertEqual "", mirror#line#Get()
+
+"
+" =========================================================
+"
+
+Given javascript (Normal function def):
+  function takeOff() {
+
+Do:
+  o
+
+Then:
+  AssertEqual "function takeOff() {", mirror#line#Get()
+
+"
+" =========================================================
+"
+
+Given javascript (Function call mirrors inside string):
+  takeOff("the `cargo`");
+
+Do:
+  o
+
+Then (Strip strings to avoid excess mirror generation):
+  AssertEqual "takeOff();", mirror#line#Get()
+
+"
+" =========================================================
+"
+
+Given javascript (Trailing mirror):
+  takeOff("the `cargo`", `
+
+Do:
+  o
+
+Then (Strip strings to avoid excess mirror generation):
+  AssertEqual "takeOff(, `", mirror#line#Get()
+
+"
+" =========================================================
+"
+
+Given javascript (Long trailing string only includes the start):
+  takeOff("out of gas :(
+
+Do:
+  o
+
+Then (Strip strings to avoid excess mirror generation):
+  AssertEqual "takeOff(\"", mirror#line#Get()
