@@ -1,0 +1,52 @@
+Execute (Ensure indent setup):
+  setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+"
+" =========================================================
+"
+
+Given javascript (Function call with template string in semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  store(`
+
+Do:
+  GA\<cr>|
+
+Expect javascript:
+  const cargo = "bobble-headed geisha dolls";
+  store(`
+    |
+  `);
+
+"
+" =========================================================
+"
+
+Given javascript (Function call with closed template string in semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  store(`<${cargo}>`);
+
+Do:
+  GA\<cr>|
+
+Expect javascript (Don't add unnecessary garbage):
+  const cargo = "bobble-headed geisha dolls";
+  store(`<${cargo}>`);
+  |
+
+"
+" =========================================================
+"
+
+Given javascript (Function call with multiple template strings in semicolon context):
+  const cargo = "bobble-headed geisha dolls";
+  store(`the ${cargo}`, `
+
+Do:
+  GA\<cr>|
+
+Expect javascript (Add the right amount of mirror):
+  const cargo = "bobble-headed geisha dolls";
+  store(`the ${cargo}`, `
+    |
+  `);
