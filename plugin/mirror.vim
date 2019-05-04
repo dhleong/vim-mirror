@@ -1,11 +1,13 @@
 " NOTE: semicolon can be used when there is no container (first branch),
-" in a function container (first half of " second branch) or in an arrow
-" lambda (second half of second branch)
+" in a function container (first part of second branch) or in an arrow
+" lambda (second part of second branch).
+" The third part of the second branch is for supporting Typescript
+" functions/methods with a return type
 let s:semicolon_suffix = mirror#suffix#Define(';', {
     \   'after': ')]}',
     \   'onlyIfPresent': 1,
     \   'neverIfContextMatches': 'function\|class\|interface\|if\|else\|for\|while',
-    \   'whenContainerMatches': '^$\|)\(\s\|=>\)*{',
+    \   'whenContainerMatches': '^$\|)\(\s\|=>\|\:\s*\w\+\)*{',
     \ })
 
 let s:c_open = '([{'

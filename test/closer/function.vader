@@ -1,0 +1,40 @@
+Execute (Ensure indent setup):
+  setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+"
+" =========================================================
+"
+
+Given javascript (return Object literal in anonymous function with semicolon context):
+  function takeOff() {
+    return {
+  };
+
+Do:
+  2GA\<cr>|
+
+Expect javascript (Use semicolon suffix when appropriate):
+  function takeOff() {
+    return {
+      |
+    };
+  };
+
+"
+" =========================================================
+"
+
+Given typescript (return Object literal in anonymous function with semicolon context):
+  function takeOff(): ICargo {
+    return {
+  };
+
+Do:
+  2GA\<cr>|
+
+Expect typescript (Use semicolon suffix when appropriate):
+  function takeOff(): ICargo {
+    return {
+      |
+    };
+  };
