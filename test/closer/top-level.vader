@@ -130,3 +130,21 @@ Expect javascript (Use semicolon suffix when appropriate):
     |
   };
 
+"
+" =========================================================
+"
+
+Given javascript (try/catch with semcolon context):
+  const cargo = "bobble-headed geisha dolls";
+  try {
+
+Do:
+  GA\<cr>|
+
+Expect javascript (No semicolon):
+  const cargo = "bobble-headed geisha dolls";
+  try {
+    |
+  }
+
+

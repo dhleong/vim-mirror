@@ -1,3 +1,6 @@
+" TODO: is there a better way to handle this?
+let s:standardKeywordContext = 'function\|class\|interface\|if\|else\|for\|while\|try\|catch\|finally'
+
 " NOTE: semicolon can be used when there is no container (first branch),
 " in a function container (first part of second branch) or in an arrow
 " lambda (second part of second branch).
@@ -6,7 +9,7 @@
 let s:semicolon_suffix = mirror#suffix#Define(';', {
     \   'after': ')]}',
     \   'onlyIfPresent': 1,
-    \   'neverIfContextMatches': 'function\|class\|interface\|if\|else\|for\|while',
+    \   'neverIfContextMatches': s:standardKeywordContext,
     \   'whenContainerMatches': '^$\|)\(\s\|=>\|\:\s*\w\+\)*{',
     \ })
 
@@ -16,7 +19,7 @@ let s:c_suffixes = [ s:semicolon_suffix ]
 
 let s:comma_suffix = mirror#suffix#Define(',', {
     \   'after': ']}',
-    \   'neverIfContextMatches': 'function\|class\|interface\|if\|else\|for\|while',
+    \   'neverIfContextMatches': s:standardKeywordContext,
     \   'neverIfContainerMatches': 'class\|interface',
     \   'whenContainerMatches': '\s*\([\|{\)$',
     \ })
