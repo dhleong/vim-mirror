@@ -28,8 +28,12 @@ augroup mirror
   au!
   autocmd FileType javascript,typescript
         \ let b:mirror_open = s:c_open . '`' |
-        \ let b:mirror_close= s:c_close . '`' |
+        \ let b:mirror_close = s:c_close . '`' |
         \ let b:mirror_suffixes = s:c_suffixes + [s:comma_suffix] |
+        \ call mirror#Enable()
+  autocmd FileType c,cpp,go,java,kotlin,objc
+        \ let b:mirror_open = s:c_open |
+        \ let b:mirror_close = s:c_close |
         \ call mirror#Enable()
 augroup END
 
