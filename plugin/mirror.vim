@@ -1,5 +1,5 @@
 " TODO: is there a better way to handle this?
-let s:standardKeywordContext = 'function\|class\|interface\|if\|else\|for\|while\|try\|catch\|finally'
+let s:standardKeywordContext = 'function\|class\|interface\|if\|else\|for\|while\|try\|catch\|finally\|enum'
 
 " NOTE: semicolon can be used when there is no container (first branch),
 " in a function container (first part of second branch) or in an arrow
