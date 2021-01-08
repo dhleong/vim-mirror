@@ -20,7 +20,7 @@ let s:c_suffixes = [ s:semicolon_suffix ]
 let s:comma_suffix = mirror#suffix#Define(',', {
     \   'after': ']}',
     \   'neverIfContextMatches': s:standardKeywordContext,
-    \   'neverIfContainerMatches': 'class\|interface',
+    \   'neverIfContainerMatches': 'class\|interface\|struct\|trait\|impl',
     \   'whenContainerMatches': '\s*\([\|{\)$',
     \ })
 
@@ -34,6 +34,11 @@ augroup mirror
   autocmd FileType c,cs,cpp,go,java,json,kotlin,objc,ruby,swift,css,less,scss
         \ let b:mirror_open = s:c_open |
         \ let b:mirror_close = s:c_close |
+        \ call mirror#Enable()
+  autocmd FileType rust
+        \ let b:mirror_open = s:c_open |
+        \ let b:mirror_close = s:c_close |
+        \ let b:mirror_suffixes = s:c_suffixes + [s:comma_suffix] |
         \ call mirror#Enable()
 augroup END
 
