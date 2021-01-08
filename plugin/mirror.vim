@@ -1,5 +1,6 @@
 " TODO: is there a better way to handle this?
-let s:standardKeywordContext = 'function\|class\|interface\|if\|else\|for\|while\|try\|catch\|finally\|enum'
+let s:toplevels = 'class\|interface\|struct\|trait\|impl'
+let s:standardKeywordContext = s:toplevels . '\|function\|if\|else\|for\|while\|try\|catch\|finally\|enum'
 
 " NOTE: semicolon can be used when there is no container (first branch),
 " in a function container (first part of second branch) or in an arrow
@@ -20,7 +21,7 @@ let s:c_suffixes = [ s:semicolon_suffix ]
 let s:comma_suffix = mirror#suffix#Define(',', {
     \   'after': ']}',
     \   'neverIfContextMatches': s:standardKeywordContext,
-    \   'neverIfContainerMatches': 'class\|interface\|struct\|trait\|impl',
+    \   'neverIfContainerMatches': s:toplevels,
     \   'whenContainerMatches': '\s*\([\|{\)$',
     \ })
 
