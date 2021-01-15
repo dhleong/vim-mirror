@@ -27,7 +27,7 @@ let s:comma_suffix = mirror#suffix#Define(',', {
 
 augroup mirror
   au!
-  autocmd FileType javascript,javascript.jsx,typescript,typescript.tsx,typescript.jsx
+  autocmd FileType javascript,javascript.jsx,typescript,typescript.tsx,typescript.jsx,typescriptreact
         \ let b:mirror_open = s:c_open . '`' |
         \ let b:mirror_close = s:c_close . '`' |
         \ let b:mirror_suffixes = s:c_suffixes + [s:comma_suffix] |
