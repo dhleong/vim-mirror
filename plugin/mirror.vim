@@ -36,7 +36,12 @@ augroup mirror
         \ let b:mirror_open = s:c_open |
         \ let b:mirror_close = s:c_close |
         \ call mirror#Enable()
-  autocmd FileType rust
+  autocmd FileType python
+        \ let b:mirror_open = s:c_open |
+        \ let b:mirror_close = s:c_close |
+        \ let b:mirror_suffixes = [s:comma_suffix] |
+        \ call mirror#Enable()
+  autocmd FileType lua,rust
         \ let b:mirror_open = s:c_open |
         \ let b:mirror_close = s:c_close |
         \ let b:mirror_suffixes = s:c_suffixes + [s:comma_suffix] |
