@@ -23,10 +23,17 @@ func! mirror#Enable()
         return
     endif
 
+    if get(g:, 'mirror_no_mappings', 0) == 1
+        return
+    endif
+
     let oldmap = maparg('<CR>', 'i')
 
-    if oldmap =~# 'MirrorClose'
-        " already mapped. maybe the user was playing with `set ft`
+    if oldmap =~# '^<Lua '
+        " Mapping has been set by a lua fn. We can't do anything about
+        " that at this time without possibly clobbering other <CR> mappings.
+    elseif oldmap =~# 'MirrorClose'
+        " Already mapped. maybe the user was playing with `set ft`
     elseif oldmap !=# ''
         exe 'imap <CR> ' . oldmap . '<Plug>MirrorClose'
     else
