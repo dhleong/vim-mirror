@@ -25,6 +25,11 @@ let s:comma_suffix = mirror#suffix#Define(',', {
     \   'whenContainerMatches': '\s*\([\|{\)$',
     \ })
 
+if maparg('<Plug>MirrorClose') ==# ''
+    inoremap <silent> <SID>MirrorClose <C-R>=mirror#closer#Close()<CR>
+    imap <script> <Plug>MirrorClose <SID>MirrorClose
+endif
+
 augroup mirror
   au!
   autocmd FileType javascript,javascript.jsx,typescript,typescript.tsx,typescript.jsx,typescriptreact
