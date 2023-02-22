@@ -1,8 +1,3 @@
-if maparg('<Plug>MirrorClose') ==# ''
-    inoremap <silent> <SID>MirrorClose <C-R>=mirror#closer#Close()<CR>
-    imap <script> <Plug>MirrorClose <SID>MirrorClose
-endif
-
 func! mirror#Config()
     let open = get(b:, 'mirror_open', '')
     if open ==# ''
