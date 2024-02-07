@@ -37,7 +37,7 @@ augroup mirror
         \ let b:mirror_close = s:c_close . '`' |
         \ let b:mirror_suffixes = s:c_suffixes + [s:comma_suffix] |
         \ call mirror#Enable()
-  autocmd FileType c,cs,cpp,go,java,json,kotlin,objc,ruby,swift,css,less,scss
+  autocmd FileType c,cs,cpp,go,java,json,kotlin,objc,ruby,swift,css,less,scss,proto
         \ let b:mirror_open = s:c_open |
         \ let b:mirror_close = s:c_close |
         \ call mirror#Enable()
